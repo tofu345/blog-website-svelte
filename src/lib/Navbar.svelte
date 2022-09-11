@@ -1,12 +1,10 @@
-<script>
-  import Link from "./Link.svelte";
-</script>
-
-<nav class="p-5 px-10 w-full mx-auto flex justify-between align-center">
-  <p>My Blog Website</p>
+<nav
+  class="p-5 px-10 w-full mx-auto vsm:flex justify-between align-center border-b-2"
+>
+  <a href="/" class="link"> My Blog Website </a>
   <div class="flex flex-row gap-5">
-    <Link to="/">About</Link>
-    <Link to="/">Policy</Link>
-    <Link to="/">Content</Link>
+    <a href="/" class="link"> About </a>
+    <a href="/" class="link"> Policy </a>
+    <a href="/" class="link"> Content </a>
   </div>
 </nav>
