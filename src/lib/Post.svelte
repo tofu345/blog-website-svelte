@@ -2,21 +2,39 @@
   import Card from "./Card.svelte";
 
   export let title = "Post";
-  export let createdDate = "Today";
+  export let created = "Today";
   export let content = `
     Lorem ipsum dolor sit amet consectetur adipisicing elit. 
     Animi excepturi aperiam recusandae deserunt, dolor, 
     reiciendis velit, perspiciatis tenetur asperiores vero debitis. 
     Officia accusantium iure iusto enim? Magnam dicta autem vero.`;
   export let to = "/";
-  export let isDetailView = true;
+  export let isDetailView = false;
+  export let author = "tofu";
+
+  const truncateStr = (str) => {
+    const length = 1000;
+    if (str.length > length) {
+      return str.substring(0, length) + "...";
+    } else {
+      return str;
+    }
+  };
 </script>
 
 <Card>
   <h3 class="text-3xl font-medium">{title}</h3>
-  <p class="font-light text-gray-500">{createdDate}</p>
-  <p>{content}</p>
-  {#if isDetailView}
+  <p class="font-light text-gray-500">
+    Written on {created} by {author}
+  </p>
+  <p class="break-all">
+    {#if !isDetailView}
+      {@html truncateStr(content)}
+    {:else}
+      {@html content}
+    {/if}
+  </p>
+  {#if !isDetailView}
     <a
       class="css-transition relative p-[10px] pr-7 mt-2 bg-blue-500 font-bold text-white rounded-md"
       href={to}

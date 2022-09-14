@@ -1,5 +1,8 @@
 <script>
   import Card from "./Card.svelte";
+  import { createEventDispatcher } from "svelte";
+
+  const dispatch = createEventDispatcher();
 </script>
 
 <Card>
@@ -8,10 +11,11 @@
     This awesome blog is made on the top of our Favourite Javascript Framework
     'Svelte', follow up the tutorial to learn how we made it..!
   </p>
-  <a
-    href="/"
-    class="w-fit p-[10px] mt-2 bg-red-500 font-bold text-white rounded-md"
+  <p
+    href="/about"
+    on:click={() => dispatch("openCreateModal")}
+    class="cursor-pointer w-fit p-[10px] mt-2 bg-red-500 font-bold text-white rounded-md"
   >
-    Know More
-  </a>
+    Create Post
+  </p>
 </Card>
