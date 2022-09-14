@@ -37,12 +37,11 @@
       return;
     }
 
-    (titleError = ""), (contentError = "");
-    submittingPost = true;
+    (titleError = ""), (contentError = ""), (submittingPost = true);
 
     if (titleInValid || contentInValid) {
-      if (titleInValid) titleError = "This Field is required";
-      if (contentInValid) contentError = "This Field is required";
+      if (titleInValid) titleError = "This field is required";
+      if (contentInValid) contentError = "This field is required";
       submittingPost = false;
       return;
     }
@@ -75,7 +74,7 @@
       };
     }
 
-    submittingPost = true;
+    submittingPost = false;
   };
 </script>
 

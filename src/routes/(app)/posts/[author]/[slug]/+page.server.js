@@ -6,6 +6,6 @@ export async function load({ params, url }) {
   if (post) {
     return post;
   }
- 
+
   throw error(404, 'Error Fetching Posts');
 }

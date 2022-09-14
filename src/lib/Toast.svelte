@@ -15,17 +15,17 @@
   export let notif;
 </script>
 
-<div class="relative border-2 bg-white border-gray p-3 pr-6 rounded-md">
-  <div class="overflow-auto h-full pr-3">
+<div class="bg-white rounded-xl flex w-fit border-2">
+  <div class="overflow-auto h-full m-4 mr-3">
     {truncateStr(notif.message)}
   </div>
+
   <div
-    class="rounded-r-md absolute cursor-pointer top-0 right-0 h-full min-w-[30px]"
+    class="transition-all duration-300 cursor-pointer h-full m-3 ml-0 mr-2 p-3 my-auto rounded-full border-2 border-transparent
+      hover:bg-gray-200/60 hover:border-gray-300/70"
+    on:click={() => dispatch("deleteNotif", notif.id)}
   >
-    <div
-      class="pr-1 h-full flex justify-center items-center rounded-r-lg"
-      on:click={() => dispatch("deleteNotif", notif.id)}
-    >
+    <div class="h-full flex justify-center items-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"

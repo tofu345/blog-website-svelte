@@ -1,32 +1,33 @@
 <script>
-  import { createEventDispatcher } from "svelte";
+  import general from "$lib/stores/general";
+  import { fade } from "svelte/transition";
 
-  const dispatch = createEventDispatcher();
-
-  export let shown = false;
+  const closeModal = () => {
+    general.update((currentData) => {
+      currentData["modalShown"] = false;
+      return currentData;
+    });
+  };
 </script>
 
-{#if shown}
+{#if $general.modalShown}
   <div
     class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full h-full
-    flex justify-center items-center md:inset-0 h-modal md:h-full bg-gray-700/50"
+    flex justify-center items-center md:inset-0 h-modal bg-gray-700/50"
+    on:click|self={() => closeModal()}
+    transition:fade={{ duration: 150 }}
   >
     <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
       <!-- Modal content -->
-      <div class="relative bg-white shadow dark:bg-gray-700 rounded-lg">
+      <div class="relative bg-white shadow rounded-lg">
         <!-- Modal header -->
-        <div
-          class="flex justify-between items-start p-4 pb-2 rounded-t dark:border-gray-600"
-        >
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-            Create Post
-          </h3>
+        <div class="flex justify-between items-start p-4 pb-2 rounded-t">
+          <h3 class="text-xl font-semibold text-gray-900">Create Post</h3>
           <button
             type="button"
             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900
-              rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600
-              dark:hover:text-white"
-            on:click={() => dispatch("closeModal")}
+              rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+            on:click={() => closeModal()}
           >
             <svg
               aria-hidden="true"

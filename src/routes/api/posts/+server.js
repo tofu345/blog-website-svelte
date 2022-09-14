@@ -28,7 +28,13 @@ export async function POST({request}) {
 
   const res = await fetch('http://localhost:8000/api/posts/', data)
     .then(res => res.json())
-    .catch(res => res.json())
+    .catch(res => {
+      try {
+        res.json();
+      } catch (err) {
+        throw error(500, err);
+      }
+    })
     
 
   return new json(res)

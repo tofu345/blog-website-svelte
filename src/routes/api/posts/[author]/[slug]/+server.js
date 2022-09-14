@@ -10,3 +10,25 @@ export async function GET({ url, params }) {
  
   throw error(404, 'Error Fetching Posts');
 }
+
+
+export async function DELETE({url, params}) {
+  const fetchData = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  // const data = 
+  const res = await fetch(`http://localhost:8000/api/posts/${params.author}/${params.slug}`, fetchData).then(
+    (res) => res.json()
+  ).catch(err => {
+    try {
+      err.json()
+    } catch (error) {
+      throw error(500, error)
+    }
+  })
+
+  return new json(res)
+}

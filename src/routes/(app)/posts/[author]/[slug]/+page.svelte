@@ -1,7 +1,7 @@
 <script>
   import Body from "$lib/Body.svelte";
   import Post from "$lib/Post.svelte";
-  import AboutUs from "$lib/AboutUs.svelte";
+  // import AboutUs from "$lib/AboutUs.svelte";
 
   export let data;
   const post = data.data;
@@ -9,15 +9,9 @@
 
 <Body>
   <div slot="left">
-    <Post
-      isDetailView={true}
-      content={post.content}
-      title={post.title}
-      author={post.author}
-      created={post.created}
-    />
+    <Post isDetailView={true} {post} />
   </div>
   <div slot="right">
-    <AboutUs />
+    <!-- <AboutUs /> -->
   </div>
 </Body>
